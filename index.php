@@ -1,6 +1,7 @@
 <?php
 include "functions.php";
 
+
 if( isset($_POST["save"]) ){
     if( tambah($_POST) > 0 ){
         echo "<script>
@@ -15,7 +16,23 @@ if( isset($_POST["save"]) ){
         }
     
     
-}
+};
+
+
+
+// if( isset($_POST["delete"]) ){
+//     if(  update($_GET) > 0){
+//         echo "<script>
+//              alert('Data Berhasil Dihapus');
+//              document.location.href = 'index.php';  
+//                   </script>";
+//         }else{
+//             echo "<script>
+//             alert('Data Gagal Dihapus');
+//             document.location.href = 'index.php';  
+//                  </script>";
+//         }
+// };
 
 
 // tambah
@@ -46,10 +63,10 @@ if( isset($_POST["save"]) ){
 //     $query = "DELETE todo WHERE id = '$delete'";
 //     mysqli_query($conn,$query);
 // }
-
-
 //read
 $todo = take("SELECT * FROM todo");
+
+
 
 
 ?>
@@ -117,10 +134,11 @@ $todo = take("SELECT * FROM todo");
                                     <td><?= $value["status"]; ?></td>
 
                                     <td>
-                                        <a href="index.php?id=<?= $value["id"];?>"><button type=" submit" name="delete"
-                                                class="btn btn-danger">Delete</button>
+                                        <a href="delete.php?id=<?= $value["id"];?>"
+                                            onclick=" return confirm('Yakin ingin menghapus list ini?');"><button
+                                                type=" submit" name="delete" class="btn btn-danger">Delete</button>
 
-                                            <a href="index.php?id=<?= $value["id"];?>"><button type=" submit"
+                                            <a href="update.php?id=<?= $value["id"];?>"><button type=" submit"
                                                     name="finish" class="btn btn-success ms-1">Finished</button>
                                     </td>
                                 </tr>

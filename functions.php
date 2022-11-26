@@ -29,6 +29,22 @@ function tambah($data){
 
     return mysqli_affected_rows($conn);
 }
+
+function hapus($data){
+    global $conn;
+    $query = "DELETE FROM todo WHERE id = '$data'";
+    mysqli_query($conn,$query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function update($data){
+    global $conn;
+    $query = "UPDATE todo set status='SELESAI!!!' WHERE id = '$data' ";
+    mysqli_query($conn,$query);
+
+    return mysqli_affected_rows($conn);
+}
     
 
 ?>
