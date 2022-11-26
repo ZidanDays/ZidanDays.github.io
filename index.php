@@ -1,8 +1,55 @@
 <?php
-require "functions.php";
+include "functions.php";
+
+if( isset($_POST["save"]) ){
+    if( tambah($_POST) > 0 ){
+        echo "<script>
+             alert('Data Berhasil Ditambahkan');
+             document.location.href = 'index.php';  
+                  </script>";
+        }else{
+            echo "<script>
+            alert('Data Gagal Ditambahkan');
+            document.location.href = 'index.php';  
+                 </script>";
+        }
+    
+    
+}
 
 
-if( isset($_post["save"]) )
+// tambah
+// if( isset($_POST["save"])) {
+//     global $conn;
+//     $createfind = htmlspecialchars($_POST["createfind"]);
+//     $query = "INSERT INTO todo VALUES ('','$createfind','Belum Dikerjakan')";
+//     mysqli_query($conn,$query);
+
+//         if(mysqli_affected_rows($conn) > 0 ){
+//             echo "<script>
+//             alert('Data Berhasil Ditambahkan');
+//             document.location.href = 'index.php';  
+//                  </script>";
+//         }else{
+//             echo "<script>
+//             alert('Data Gagal Ditambahkan');
+//             document.location.href = 'index.php';  
+//                  </script>";
+//         }
+
+// }
+
+
+// if( isset($_POST["delete"])) {
+//     global $conn;
+//     $delete = $_GET["id"];
+//     $query = "DELETE todo WHERE id = '$delete'";
+//     mysqli_query($conn,$query);
+// }
+
+
+//read
+$todo = take("SELECT * FROM todo");
 
 
 ?>
@@ -38,7 +85,7 @@ if( isset($_post["save"]) )
                             class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                             <div class="col-12">
                                 <div class="form-outline">
-                                    <input type="text" name="createfind" id="form1" class="form-control" />
+                                    <input type="text" name="createfind" id="form1" class="form-control" required>
                                     <label class="form-label" for="form1">Enter a task here</label>
                                 </div>
                             </div>
@@ -63,17 +110,18 @@ if( isset($_post["save"]) )
                             </thead>
                             <tbody>
                                 <tr>
-                                    <?php $i = 1; ?>
+                                    <?php $i = 1; global $todo; ?>
                                     <?php foreach ($todo as $value) : ;?>
                                     <th scope="row"><?= $i; ?></th>
                                     <td><?= $value["todo"]; ?></td>
                                     <td><?= $value["status"]; ?></td>
 
                                     <td>
-                                        <button type="submit" name="delete" class="btn btn-danger"
-                                            href="index.php?id=<?= $value["id"]; ?>">Delete</button>
-                                        <button type="submit" name="finish" class="btn btn-success ms-1"
-                                            href="index.php?id=<?= $value["id"]; ?>">Finished</button>
+                                        <a href="index.php?id=<?= $value["id"];?>"><button type=" submit" name="delete"
+                                                class="btn btn-danger">Delete</button>
+
+                                            <a href="index.php?id=<?= $value["id"];?>"><button type=" submit"
+                                                    name="finish" class="btn btn-success ms-1">Finished</button>
                                     </td>
                                 </tr>
                                 <?php $i++; ?>
@@ -90,3 +138,7 @@ if( isset($_post["save"]) )
 </body>
 
 </html>
+
+<!-- if (tambah($conn < 0)){ // echo "<script> alert('Data Gagal Ditambahkan')</script>" ; // }else{ // -->
+<!-- echo "<script> alert('Data Berhasil Ditambahkan')
+</script>" ;} // } -->

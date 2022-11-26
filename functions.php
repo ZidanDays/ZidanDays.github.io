@@ -23,15 +23,11 @@ function take($query){
 
 function tambah($data){
     global $conn;
-    $createfind = $data["createfind"];
-    $query = "INSERT INTO todo VALUES ('','$createfind','Belum Dikerjakan')";
+    $abc = $data["createfind"];
+    $query = "INSERT INTO todo VALUES ('','$abc','Belum Dikerjakan')";
     mysqli_query($conn,$query);
 
-    if (mysqli_affected_rows($conn < 0)){
-        echo "<script> alert('Data Berhasil Ditambahkan')</script>";
-    }else{
-        echo "<script> alert('Data Gagal Ditambahkan')</script>";}
-
+    return mysqli_affected_rows($conn);
 }
     
 
