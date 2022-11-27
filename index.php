@@ -68,8 +68,9 @@ if(isset($_POST["find"])){
                             class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                             <div class="col-12">
                                 <div class="form-outline">
-                                    <input type="text" name="createfind" id="form1" class="form-control" required>
-                                    <label class="form-label" for="form1">Enter a task here</label>
+                                    <input type="text" name="createfind" id="form1" class="form-control" autofocus
+                                        required>
+                                    <label class="form-label" for="form1">Enter This Area</label>
                                 </div>
                             </div>
 
