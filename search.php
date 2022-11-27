@@ -16,24 +16,25 @@ if( isset($_POST["save"]) ){
         }
     };
 
-// if( isset($_POST["find"]) ){
-//     if( cari($_POST) > 0 ){
-//         echo "<script>
-//         alert('Data Ditemukan');
-//         document.location.href = 'search.php';  
-//              </script>";
-//    }else{
-//        echo "<script>
-//        alert('Data Tidak ditemukan');
-//        document.location.href = 'search.php';  
-//             </script>";
-//     }
-// }
-$todo = take("SELECT * FROM todo");
-
-if(isset($_POST["find"])){
-    $todo = cari($_POST["createfind"]);
+if( isset($_POST["find"]) ){
+    if( cari($_POST) > 0 ){
+        echo "<script>
+        alert('Data Ditemukan');
+        document.location.href = 'index.php';  
+             </script>";
+   }else{
+       echo "<script>
+       alert('Data Tidak ditemukan');
+       document.location.href = 'index.php';  
+            </script>";
+    }
 }
+
+$abc = $_POST["createfind"];
+$todo = take("SELECT * FROM todo where todo LIKE '$abc'");
+
+
+
 
 ?>
 

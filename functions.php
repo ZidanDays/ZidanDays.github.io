@@ -30,6 +30,13 @@ function tambah($data){
     return mysqli_affected_rows($conn);
 }
 
+function cari($data){
+    $query = "SELECT * FROM todo where todo LIKE '$data'";
+
+    return take($query);
+}
+
+
 function hapus($data){
     global $conn;
     $query = "DELETE FROM todo WHERE id = '$data'";
@@ -45,6 +52,5 @@ function update($data){
 
     return mysqli_affected_rows($conn);
 }
-    
 
 ?>
