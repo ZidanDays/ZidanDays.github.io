@@ -143,6 +143,11 @@ footer {
     width: 100%;
 }
 
+.highlight-text {
+    color: white;
+}
+
+
 /* Media Queries for Mobile */
 @media (max-width: 768px) {
     .skills-container {
